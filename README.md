@@ -75,7 +75,7 @@ Total params (from your code):
 	•	**Trainable parameters**: 11,220,132
 	•	**Frozen parameters**: 0
 
-⸻
+-----
 
 ## 🔍 Receptive Field & Dimensions — Block-Level Table
 
@@ -109,7 +109,7 @@ Here’s the block-level summary:
 | **Head**   | GAP + FC | 512 → 100    | GAP 4×4 → 1×1; FC     | 4×4 → 1×1       | 1×1              | 51,300         | 109                |
 
 
-⸻
+-----
 
 ## 🧪 Dataset & Augmentations
 
@@ -131,7 +131,7 @@ Here’s the block-level summary:
 
 These are tuned for long training (150 epochs) so the model keeps seeing varied views and doesn’t just memorize.
 
-⸻
+-----
 
 ## ⚙️ Training Configuration
 
@@ -146,7 +146,7 @@ These are tuned for long training (150 epochs) so the model keeps seeing varied 
 	•	Loss: `CrossEntropyLoss(label_smoothing=0.1)`
 	•	Precision: `torch.amp.autocast("cuda") + GradScaler("cuda")`
 
-⸻
+-----
 
 ## 📈 Training Progress (`from training_logs_v2.md`)
 
@@ -166,9 +166,9 @@ A small snapshot (exact values from your logs):
 
 
 Full logs (all 150 epochs) are in:
-	•	`training_logs_v2.md`
+	•	[`training_logs_v2.md`](https://github.com/SXD390/ERA_CIFAR_100_ResNET_18/blob/main/training_logs_v2.md)
 
-⸻
+-----
 
 ## 🔥 Grad-CAM Visualizations
 
@@ -200,7 +200,7 @@ Example outputs:
 
 These show the network focusing on semantically meaningful regions of the object.
 
-⸻
+----
 
 ### 🤗 HuggingFace Space
 
@@ -213,7 +213,7 @@ Features:
 	•	Runs it through `best_resnet_cifar100.pth.`
 	•	Returns top-5 predictions with probabilities.
 
-⸻
+----
 
 ## 🛠 Running Locally
 
