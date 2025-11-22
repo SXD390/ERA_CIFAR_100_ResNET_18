@@ -187,9 +187,14 @@ For an input image:`
 Example outputs:
 
 <p float="left">
-  <img src="assets/gradcam/gradcam_sample_0.png" width="220" />
-  <img src="assets/gradcam/gradcam_sample_1.png" width="220" />
-  <img src="assets/gradcam/gradcam_sample_2.png" width="220" />
+  <img src="assets/gradcam/class_000_apple.png" width="220" />
+  <img src="assets/gradcam/class_006_bee.png" width="220" />
+  <img src="assets/gradcam/class_012_bridge.png" width="220" />
+    <img src="assets/gradcam/class_022_clock.png" width="220" />
+	<img src="assets/gradcam/class_085_tank.png" width="220" />
+	<img src="assets/gradcam/class_078_snake.png" width="220" />
+	<img src="assets/gradcam/class_098_woman.png" width="220" />
+	<img src="assets/gradcam/class_037_house.png" width="220" />
 </p>
 
 
