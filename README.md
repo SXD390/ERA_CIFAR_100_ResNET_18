@@ -44,14 +44,14 @@ The implementation exceeds the assignment goal of *≥73%* top-1 accuracy and ac
 
 ## 🧠 Model Architecture (CIFAR-Optimized ResNet-18)
 
-High-level structure
+### High-level structure
 
 This is a ResNet-18 style network adapted for 32×32 CIFAR images:
-	•	No 7×7 conv or max-pooling at the start.
-	•	Stem is a 3×3 conv with stride=1.
-	•	Four residual stages, each with 2 BasicBlocks.
-	•	Downsampling happens at the first block of layer2, layer3, and layer4 via stride=2.
-	•	Final head: Global Average Pool (1×1) → Dropout(p=0.3) → FC(512 → 100).
+- No 7×7 conv or max-pooling at the start.
+- Stem is a 3×3 conv with stride=1.
+- Four residual stages, each with 2 BasicBlocks.
+- Downsampling happens at the first block of layer2, layer3, and layer4 via stride=2.
+- Final head: Global Average Pool (1×1) → Dropout(p=0.3) → FC(512 → 100).
 
 ```text
 Input (3×32×32)
@@ -79,13 +79,13 @@ Total params (from your code):
 
 ## 🔍 Receptive Field & Dimensions — Block-Level Table
 
-Assumptions:
-	•	Input image: **3** × **32** × **32**
-	•	All convolutions: kernel=3, padding=1, unless explicitly noted.
-	•	Receptive field (RF) is computed at the output of each block, starting with RF=1 at the input pixel.
-	•	RF update rule:
-		•	`jump_l = jump_(l-1) * stride_l`
-		•	`RF_l   = RF_(l-1) + (kernel_l - 1) * jump_(l-1)`
+#### Assumptions:
+- Input image: **3** × **32** × **32**
+- All convolutions: kernel=3, padding=1, unless explicitly noted.
+- Receptive field (RF) is computed at the output of each block, starting with RF=1 at the input pixel.
+- RF update rule:
+	- `jump_l = jump_(l-1) * stride_l`
+	- `RF_l   = RF_(l-1) + (kernel_l - 1) * jump_(l-1)`
 
 Here’s the block-level summary:
 
@@ -176,7 +176,7 @@ Grad-CAM is computed using the last conv in the last block:
 ```py
 target_layer = model.layer4[1].conv2  # or layer4[-1].conv2
 ```
-For an input image:`
+For an input image:
 	**1.**	Forward pass → logits.
 	**2.**	Pick predicted class (or any target class).
 	**3.**	Backprop from that scalar logit.
@@ -236,7 +236,7 @@ python src/train.py \
 jupyter notebook CIFAR-100_v3.1.ipynb
 ```
 
-Run all cells to:
+**Run all cells to:**
 	•	Download CIFAR-100.
 	•	Build the model.
 	•	Train (optional).
