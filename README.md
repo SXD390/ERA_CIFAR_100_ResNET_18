@@ -70,10 +70,10 @@ AdaptiveAvgPool2d(1×1) → Dropout(0.3) → Linear(512→100)
 ```
 
 
-Total params (from your code):
-	•	**Total parameters**: 11,220,132
-	•	**Trainable parameters**: 11,220,132
-	•	**Frozen parameters**: 0
+Total params:
+- **Total parameters**: 11,220,132
+- **Trainable parameters**: 11,220,132
+- **Frozen parameters**: 0
 
 -----
 
@@ -114,20 +114,20 @@ Here’s the block-level summary:
 ## 🧪 Dataset & Augmentations
 
 ### Dataset: CIFAR-100
-	•	50,000 train, 10,000 test
-	•	100 classes, 32×32 RGB
+- 50,000 train, 10,000 test
+- 100 classes, 32×32 RGB
 
 ### Normalization:
-	•	Mean: **(0.5071, 0.4867, 0.4408)**
-	•	Std:  **(0.2675, 0.2565, 0.2761)**
+- Mean: **(0.5071, 0.4867, 0.4408)**
+- Std:  **(0.2675, 0.2565, 0.2761)**
 
 ### Training augmentations:
-	•	`RandomCrop(32, padding=4)`
-	•	`RandomHorizontalFlip(p=0.5)`
-	•	`RandomRotation(±15°)`
-	•	`ColorJitter (brightness, contrast, saturation, hue)`
-	•	`RandomErasing(p=0.5)`
-	•	`CutMix with Beta(α=1.0) (applied with some probability)`
+- `RandomCrop(32, padding=4)`
+- `RandomHorizontalFlip(p=0.5)`
+- `RandomRotation(±15°)`
+- `ColorJitter (brightness, contrast, saturation, hue)`
+- `RandomErasing(p=0.5)`
+- `CutMix with Beta(α=1.0) (applied with some probability)`
 
 These are tuned for long training (150 epochs) so the model keeps seeing varied views and doesn’t just memorize.
 
@@ -136,15 +136,15 @@ These are tuned for long training (150 epochs) so the model keeps seeing varied 
 ## ⚙️ Training Configuration
 
 **Hardware**
-	•	AWS **EC2 g5.2xlarge
-	•	NVIDIA A10G (24 GB)**
-	•	Wall-clock training time: ~45–60 minutes for 150 epochs with AMP
+- AWS **EC2 g5.2xlarge
+- NVIDIA A10G (24 GB)**
+- Training time: ~45–60 minutes for 150 epochs with AMP
 
 **Optimizer & Loss**
-	•	Optimizer: `SGD(lr=0.1, momentum=0.9, weight_decay=5e-4)`
-	•	Scheduler: `OneCycleLR over 150 epochs`
-	•	Loss: `CrossEntropyLoss(label_smoothing=0.1)`
-	•	Precision: `torch.amp.autocast("cuda") + GradScaler("cuda")`
+- Optimizer: `SGD(lr=0.1, momentum=0.9, weight_decay=5e-4)`
+- Scheduler: `OneCycleLR over 150 epochs`
+- Loss: `CrossEntropyLoss(label_smoothing=0.1)`
+- Precision: `torch.amp.autocast("cuda") + GradScaler("cuda")`
 
 -----
 
@@ -166,7 +166,7 @@ A small snapshot (exact values from your logs):
 
 
 Full logs (all 150 epochs) are in:
-	•	[`training_logs_v2.md`](https://github.com/SXD390/ERA_CIFAR_100_ResNET_18/blob/main/training_logs_v2.md)
+- [`training_logs_v2.md`](https://github.com/SXD390/ERA_CIFAR_100_ResNET_18/blob/main/training_logs_v2.md)
 
 -----
 
@@ -205,13 +205,13 @@ These show the network focusing on semantically meaningful regions of the object
 ### 🤗 HuggingFace Space
 
 A live demo is deployed on HuggingFace Spaces (Gradio):
-	•	URL: `https://huggingface.co/spaces/<your-username>/<your-space-name>`
+- URL: `https://huggingface.co/spaces/<your-username>/<your-space-name>`
 
 Features:
-	•	Upload any image.
-	•	Resizes and normalizes using CIFAR-100 stats.
-	•	Runs it through `best_resnet_cifar100.pth.`
-	•	Returns top-5 predictions with probabilities.
+- Upload any image.
+- Resizes and normalizes using CIFAR-100 stats.
+- Runs it through `best_resnet_cifar100.pth.`
+- Returns top-5 predictions with probabilities.
 
 ----
 
@@ -237,21 +237,21 @@ jupyter notebook CIFAR-100_v3.1.ipynb
 ```
 
 **Run all cells to:**
-	•	Download CIFAR-100.
-	•	Build the model.
-	•	Train (optional).
-	•	Load the best checkpoint.
-	•	Generate Grad-CAM visualizations.
+- Download CIFAR-100.
+- Build the model.
+- Train (optional).
+- Load the best checkpoint.
+- Generate Grad-CAM visualizations.
 
 ----
-```text
+
 ✅ Summary
-	•	**Architecture**: CIFAR-optimized ResNet-18 with detailed RF and param analysis.
-	•	**Training**: 150 epochs from scratch on CIFAR-100.
-	•	**Hardware**: EC2 g5.2xlarge (A10G GPU).
-	•	**Best Test Accuracy**: 77.05% @ epoch 144.
-	•	**Final Test Accuracy**: 77.00% @ epoch 150.
-	•	**Regularization**: CutMix, Random Erasing, Label Smoothing, Dropout.
-	•	**Interpretability**: Grad-CAM integrated.
-	•	**Deployment**: Live HuggingFace Space.
-```
+- **Architecture**: CIFAR-optimized ResNet-18 with detailed RF and param analysis.
+- **Training**: 150 epochs from scratch on CIFAR-100.
+- **Hardware**: EC2 g5.2xlarge (A10G GPU).
+- **Best Test Accuracy**: 77.05% @ epoch 144.
+- **Final Test Accuracy**: 77.00% @ epoch 150.
+- **Regularization**: CutMix, Random Erasing, Label Smoothing, Dropout.
+- **Interpretability**: Grad-CAM integrated.
+- **Deployment**: Live HuggingFace Space.
+
