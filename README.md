@@ -235,6 +235,7 @@ python src/train.py \
 ```bash
 jupyter notebook CIFAR-100_v3.1.ipynb
 ```
+
 Run all cells to:
 	•	Download CIFAR-100.
 	•	Build the model.
@@ -243,7 +244,7 @@ Run all cells to:
 	•	Generate Grad-CAM visualizations.
 
 ----
-
+```text
 ✅ Summary
 	•	**Architecture**: CIFAR-optimized ResNet-18 with detailed RF and param analysis.
 	•	**Training**: 150 epochs from scratch on CIFAR-100.
@@ -253,3 +254,4 @@ Run all cells to:
 	•	**Regularization**: CutMix, Random Erasing, Label Smoothing, Dropout.
 	•	**Interpretability**: Grad-CAM integrated.
 	•	**Deployment**: Live HuggingFace Space.
+```
