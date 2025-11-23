@@ -205,7 +205,7 @@ These show the network focusing on semantically meaningful regions of the object
 ### 🤗 HuggingFace Space
 
 A live demo is deployed on HuggingFace Spaces (Gradio):
-- URL: `https://huggingface.co/spaces/<your-username>/<your-space-name>`
+- URL: `https://sxd390-resnet18-cifar100.hf.space/`
 
 Features:
 - Upload any image.
